@@ -52,3 +52,32 @@ func GetPerson(ctx *gin.Context) {
 		"address": person.Address,
 	})
 }
+
+func PostData(ctx *gin.Context) {
+	data := ctx.PostForm("data")
+
+	ctx.JSON(http.StatusOK, gin.H{
+		"data": data,
+	})
+}
+
+func GetV1Ping(ctx *gin.Context) {
+	ctx.JSON(http.StatusOK, gin.H{
+		"message": "v1",
+	})
+}
+
+func GetV2Ping(ctx *gin.Context) {
+	ctx.JSON(http.StatusOK, gin.H{
+		"message": "v2",
+	})
+}
+
+func GetPersonResponse(ctx *gin.Context) {
+	person := model.Person{
+		Name:    "taro",
+		Address: "tokyo",
+	}
+
+	ctx.JSON(200, person)
+}
